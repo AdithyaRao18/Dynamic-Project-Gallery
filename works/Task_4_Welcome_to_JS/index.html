@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome to JS</title>
+    <script>
+        function welcomeUser() {
+            const username = document.getElementById('username').value;
+            if (username) {
+                alert(`Welcome to JS, ${username}!`);
+            } else {
+                alert('Please enter a username.');
+            }
+        }
+    </script>
+</head>
+<body>
+    <h2>Welcome to JavaScript</h2>
+    <input type="text" id="username" placeholder="Enter your username" />
+    <button onclick="welcomeUser()">Enter</button>
+</body>
+</html>

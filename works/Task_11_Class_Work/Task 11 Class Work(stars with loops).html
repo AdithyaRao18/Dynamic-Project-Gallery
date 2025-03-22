@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<p>Enter a positive number:</p>
+<input type="number" id="num" min="1">
+<button onclick="generateStar()">Generate Star</button>
+<div id="star"></div>
+<script>
+    let colors = ["red", "blue", "green"];
+    let idx = 0;
+    let size = colors.length;
+ function generateStar() {
+  var num = document.getElementById("num").value;
+  var star = "";
+  for (var i = 1; i <= num; i++) {
+    for (var j = 1; j <= i; j++) {
+      star += "*";
+    }
+    star += "<br>";
+  }
+  document.getElementById("star").innerHTML = star;
+  document.getElementById("star").style = "color:" + colors[idx];
+  idx = (idx + 1) % size;
+}
+</script>
+</body>
+</html>

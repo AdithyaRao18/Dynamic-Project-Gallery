@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        pre {
+    background: #f4f4f4;
+    padding: 15px;
+    border-radius: 5px;
+    width: 100%;
+    max-width: 800px;  /* Adjust as needed */
+    height: 300px;  /* Fixed height for scrolling */
+    overflow: auto;  /* Enables scrolling when content overflows */
+    white-space: pre-wrap; /* Wraps text properly */
+    word-wrap: break-word; /* Breaks long words */
+}
+
+        
+    </style>
+</head>
+<body>
+    <pre id="txtContent">Loading content...</pre>
+
+    <script>
+        fetch('New Text Document.txt')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('txtContent').textContent = data;
+            })
+            .catch(error => {
+                document.getElementById('txtContent').textContent = "Error loading the document.";
+                console.error("Error:", error);
+            });
+    </script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script>
+    function calculateSum() {
+      let a = parseInt(document.getElementById("input_a").value);
+      let b = parseInt(document.getElementById("input_b").value);
+      let sum = 0;
+      for (let i = a; i <= b; i++) {
+        sum += i;
+      }
+      document.getElementById("result").innerHTML = "Sum: " + sum;
+    }
+  </script>
+</head>
+<body>
+  <label for="input_a">Enter the first number:</label>
+  <input type="number" id="input_a"><br><br>
+  <label for="input_b">Enter the second number:</label>
+  <input type="number" id="input_b"><br><br>
+  <button onclick="calculateSum()">Calculate</button>
+  <p id="result"></p>
+</body>
+</html>

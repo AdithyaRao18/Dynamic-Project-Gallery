@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vanishing Content</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        #content {
+            font-size: 20px;
+            font-weight: bold;
+            transition: opacity 1s ease-in-out;
+        }
+        button {
+            padding: 10px 15px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            background-color: black;
+            color: white;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: grey;
+        }
+    </style>
+    <script>
+        function hideContent() {
+            document.getElementById("content").style.opacity = "0";
+            setTimeout(() => {
+                document.getElementById("content").style.display = "none";
+            }, 1000); // Matches the transition duration
+        }
+
+        function showContent() {
+            let content = document.getElementById("content");
+            content.style.display = "block";
+            setTimeout(() => {
+                content.style.opacity = "1";
+            }, 10);
+        }
+
+        window.onload = function() {
+            setTimeout(hideContent, 5000); 
+        };
+    </script>
+</head>
+<body>
+
+    <h2>Task: Vanishing Content</h2>
+    <p id="content">Clothes are Vanished!</p>
+    <button onclick="showContent()">Bring it Back</button>
+
+</body>
+</html>
