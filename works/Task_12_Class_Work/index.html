@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Student Profile</title>
+        <script>
+            
+            var studentInfo = {}; 
+
+            function insert_student_info() {
+               
+                var name = document.getElementById("name").value;
+                var age = document.getElementById("age").value;
+                var studentId = document.getElementById("student_id").value;
+                var major = document.getElementById("major").value;
+
+                
+                if (name && age && studentId && major) {
+                    studentInfo = {
+                        name: name,
+                        age: age,
+                        studentId: studentId,
+                        major: major
+                    };
+                    
+                    document.getElementById("name").value = "";
+                    document.getElementById("age").value = "";
+                    document.getElementById("student_id").value = "";
+                    document.getElementById("major").value = "";
+
+                    alert("Student Information Inserted!");
+                } else {
+                    alert("Please fill all fields!");
+                }
+            }
+
+           
+            function get_student_info() {
+                if (Object.keys(studentInfo).length > 0) {
+                    
+                    document.getElementById("profile_div").innerHTML = "The student, " + studentInfo.name + ", is " + studentInfo.age + " years old. " +
+                        "Their student ID is " + studentInfo.studentId + " and they are majoring in " + studentInfo.major + ".";
+                } else {
+                    document.getElementById("profile_div").innerHTML = "No student information available. Please insert the information first!";
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <h1>Student Profile Form</h1>
+        
+        <div>
+            <input type="text" id="name" placeholder="Enter the student's name:"><br><br>
+            <input type="number" id="age" placeholder="Enter the student's age:"><br><br>
+            <input type="text" id="student_id" placeholder="Enter the student's ID:"><br><br>
+            <input type="text" id="major" placeholder="Enter the student's major:"><br><br>
+        </div>
+
+        <button onclick="insert_student_info()">Insert Info</button>
+        <button onclick="get_student_info()">Get Info</button>
+
+        <p id="profile_div"></p> <!-- This is where the student profile will be displayed -->
+    </body>
+</html>

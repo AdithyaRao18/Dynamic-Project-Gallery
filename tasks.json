@@ -1,0 +1,16 @@
+[
+    { "name": "Task 1 Expectation Document", "path": "works/Task_1_Expectation_Document/index.html" },
+    { "name": "Task 2 Basic HTML Styling", "path": "works/Task_2_Basic_HTML_Styling/index.html" },
+    { "name": "Task 3 CSS Hover", "path": "works/Task_3_CSS_Hover/index.html" },
+    { "name": "Task 4 Welcome to JS", "path": "works/Task_4_Welcome_to_JS/index.html" },
+    { "name": "Task 5 Calculator with JS", "path": "works/Task_5_Calculator_with_JS/index.html" },
+    { "name": "Task 7 Console Output", "path": "works/Task_7_Console_Output/index.html" },
+    { "name": "Task 8 String Operation", "path": "works/Task_8_String_Operation/index.html" },
+    { "name": "Task 9 Conditions", "path": "works/Task_9_Conditions/index.html" },
+    { "name": "Task 10 Call-Stack with Array", "path": "works/Task_10_Call-Stack_with_Array/index.html" },
+    { "name": "Task 11 Class Work", "path": "works/Task_11_Class_Work/index.html" },
+    { "name": "Task 12 Class Work", "path": "works/Task_12_Class_Work/index.html" },
+    { "name": "Task 14 Class Work - Functions", "path": "works/Task_14_Class_Work_-_Functions/index.html" },
+    { "name": "Task 15 Class Work - Class & Bootstrap", "path": "works/Task_15_Class_Work_-_Class_&_Bootstrap/index.html" },
+    { "name": "Task 16 Class Work - JSON", "path": "works/Task_16_Class_Work_-_JSON/index.html" }
+]
