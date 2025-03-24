@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Student Profile</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f4f4f9;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                margin: 0;
+            }
+            .container {
+                text-align: center;
+                background-color: #ffffff;
+                padding: 20px;
+                border-radius: 8px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                width: 500px;
+            }
+            h1 {
+                color: #333;
+            }
+            input[type="text"], input[type="number"] {
+                width: 45%;
+                padding: 8px;
+                margin: 5px;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+                text-align: center;
+            }
+            .btn {
+                padding: 10px 20px;
+                margin: 10px 5px;
+                border: none;
+                border-radius: 4px;
+                font-size: 16px;
+                cursor: pointer;
+                width: 45%;
+            }
+            .insert-btn { background-color: #A3D977; color: black; }
+            .clear-input-btn { background-color: #F7B8A3; color: black; }
+            .show-all-btn { background-color: #A3D977; color: black; }
+            .clear-output-btn { background-color: #F7B8A3; color: black; }
+            .btn:hover { opacity: 0.9; }
+            #profile_div, #search_result {
+                text-align: left;
+                margin-top: 20px;
+                font-size: 16px;
+                font-weight: bold;
+            }
+            h2 { text-align: left; margin-top: 20px; font-size: 20px; color: #333; }
+        </style>
+        <script>
+            var students = [];
+
+            function insert_student_info() {
+                var name = document.getElementById("name").value;
+                var age = document.getElementById("age").value;
+                var studentId = document.getElementById("student_id").value;
+                var major = document.getElementById("major").value;
+                var messageDiv = document.getElementById("message");
+
+                if (name && age && studentId && major) {
+                    var student = {
+                        name: name,
+                        age: age,
+                        studentId: studentId,
+                        major: major
+                    };
+
+                    students.push(student);
+
+                    document.getElementById("name").value = "";
+                    document.getElementById("age").value = "";
+                    document.getElementById("student_id").value = "";
+                    document.getElementById("major").value = "";
+
+                    messageDiv.innerHTML = "<span style='color:green'>Student information inserted successfully!</span>";
+                    setTimeout(() => { messageDiv.innerHTML = ""; }, 3000);
+                } else {
+                    messageDiv.innerHTML = "<span style='color:red'>Please fill all fields!</span>";
+                    setTimeout(() => { messageDiv.innerHTML = ""; }, 3000);
+                }
+            }
+
+            function clear_input_fields() {
+                document.getElementById("name").value = "";
+                document.getElementById("age").value = "";
+                document.getElementById("student_id").value = "";
+                document.getElementById("major").value = "";
+            }
+
+            function show_all_data() {
+                var output = "<h2>Student List</h2>";
+                if (students.length > 0) {
+                    for (var i = 0; i < students.length; i++) {
+                        var student = students[i];
+                        output += "Student " + (i + 1) + ": " 
+                                + student.name + ", " 
+                                + student.age + " years old, ID: " 
+                                + student.studentId + ", Major: " 
+                                + student.major + "<br>";
+                    }
+                    document.getElementById("profile_div").innerHTML = output;
+                } else {
+                    document.getElementById("profile_div").innerHTML = "<strong>No student information available. Please insert the information first!</strong>";
+                }
+            }
+
+            function clear_output() {
+                document.getElementById("profile_div").innerHTML = "";
+                document.getElementById("search_result").innerHTML = "";
+            }
+
+            function search_student() {
+                var searchInput = document.getElementById("search").value.toLowerCase();
+                var resultDiv = document.getElementById("search_result");
+                var found = false;
+                var output = "<h2>Search Results</h2>";
+
+                if (searchInput) {
+                    for (var i = 0; i < students.length; i++) {
+                        var student = students[i];
+                        if (student.name.toLowerCase().includes(searchInput) || student.studentId.toLowerCase().includes(searchInput)) {
+                            output += "Student " + (i + 1) + ": " 
+                                    + student.name + ", " 
+                                    + student.age + " years old, ID: " 
+                                    + student.studentId + ", Major: " 
+                                    + student.major + "<br>";
+                            found = true;
+                        }
+                    }
+
+                    if (!found) {
+                        output += "<span style='color:red'>No student found!</span>";
+                    }
+
+                    resultDiv.innerHTML = output;
+                } else {
+                    resultDiv.innerHTML = "<span style='color:red'>Enter a name or student ID to search.</span>";
+                }
+            }
+
+            document.addEventListener("DOMContentLoaded", function() {
+                document.getElementById("search").addEventListener("input", search_student);
+            });
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Student Profile</h1>
+
+            <input type="text" id="name" placeholder="Name">
+            <input type="text" id="student_id" placeholder="Student ID">
+            <br>
+            <input type="number" id="age" placeholder="Age">
+            <input type="text" id="major" placeholder="Major">
+            <br>
+
+            <button class="btn insert-btn" onclick="insert_student_info()">Insert Info</button>
+            <button class="btn clear-input-btn" onclick="clear_input_fields()">Clear Inputs</button>
+            <br>
+            <button class="btn show-all-btn" onclick="show_all_data()">Show All</button>
+            <button class="btn clear-output-btn" onclick="clear_output()">Clear Display</button>
+
+            <p id="message"></p>
+
+            <div id="profile_div"></div>
+
+            <h2>Search Student</h2>
+            <input type="text" id="search" placeholder="Enter Name or Student ID">
+
+            <div id="search_result"></div>
+        </div>
+    </body>
+</html>
